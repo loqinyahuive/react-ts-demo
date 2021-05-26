@@ -1,14 +1,17 @@
 // import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+// import logo from './logo.svg';
+import './App.less';
+import  MyFirstGrid from './components/react-grid-layout-test'
+import  AntdDemo from './components/AntdDemo'
 const { React } = require('react');
-// const {logo} = require('./logo.svg');
 
 function App() {
+  console.log(AntdDemo)
   return (
     <div className="App">
-      <header className="App-header">
+      <MyFirstGrid ></MyFirstGrid>
+      <AntdDemo></AntdDemo>
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
@@ -21,7 +24,7 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
     </div>
   );
 }
