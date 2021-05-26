@@ -1,6 +1,9 @@
-import React from 'react';
+// import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+
+const { React } = require('react');
+// const {logo} = require('./logo.svg');
 
 function App() {
   return (
