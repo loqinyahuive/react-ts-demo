@@ -24,3 +24,9 @@ export const addTodo = {
     state: "todo"
   }
 }
+export const getList = () => async (dispatch: Dispatch) => {
+
+  // const response: TTodo = await fetch('/addTodo', {data: newTodo})
+
+  dispatch({ type: ADD_TODO, payload: {} })
+}
