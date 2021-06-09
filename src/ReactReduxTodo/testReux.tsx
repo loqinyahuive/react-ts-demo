@@ -22,7 +22,7 @@ function Test() {
   const todos = useSelector<TStore, TTodo[]>(selectFilteredTodos)
     // console.log(state);
     const add = () => {
-      dispatch(addTodo())
+      dispatch(addTodo)
     }
   return (
     <div>
