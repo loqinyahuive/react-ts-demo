@@ -1,8 +1,4 @@
-import { ADD_TODO, REMOVE_TODO, TOGGLE_TODO } from "./actionTypes";
-import { TTodoAction } from "./actionCreators";
-
-type THandler = (todoState: TTodoStore, action: TTodoAction) => TTodoStore;
-type THandlerMapper = { [key: string]: THandler };
+import {ADD_TODO, REMOVE_TODO, TOGGLE_TODO} from './actionTypes'
 const initTodos: TTodo[] = [
   {
     id: "1",
@@ -26,26 +22,29 @@ const initState = {
   filter: initFilter
 };
 export const todosReducer = (todos: TTodo[] = initTodos, action: any) => {
-  const handlerMapper = {
-    [ADD_TODO]: (todos, action) => {
-      return [...todos, action.payload]
-    },
-    [REMOVE_TODO]: (todos, action) => {
-      return todos.filter(todo => todo.id !== action.payload)
-    },
-    [TOGGLE_TODO]: (todos, action) => {
-      return todos.map(todo =>
+  switch (action.type) {
+    case ADD_TODO:
+      const newTodos1 = [...todos, action.payload];
+      return newTodos1;
+    case REMOVE_TODO:
+      // const newTodos = state.todos.filter(todo => todo.id !== action.payload)
+
+      return {
+        ...todos,
+        todos: todos.filter((todo) => todo.id !== action.payload)
+      };
+    case TOGGLE_TODO:
+      const newTodos = todos.map((todo) =>
         todo.id === action.payload
-          ? {...todo, state: todo.state === 'todo' ? 'done' : 'todo'}
+          ? { ...todo, state: todo.state === "todo" ? "done" : "todo" }
           : todo
-      )
-    }
+      );
+
+      return { ...todos, todos: newTodos };
+    default:
+      return todos;
   }
-
-  const handler = handlerMapper[action.type]
-
-  return handler ? handler(todos, action) : todos
-}
+};
 
 export const filterReducer = (filter: TFilter = initFilter, action: any) => {
   switch (action.type) {
