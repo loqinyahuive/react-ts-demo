@@ -1,4 +1,5 @@
-import {combineReducers} from "redux"
+import { combineReducers } from "redux"
+import {ADD_TODO, REMOVE_TODO, TOGGLE_TODO} from './actionTypes'
 const initTodos: TTodo[] = [
   {
     id: "1",
@@ -23,17 +24,17 @@ const initState = {
 };
 const todosReducer = (todos: TTodo[] = initTodos, action: any) => {
   switch (action.type) {
-    case "addTodo":
+    case ADD_TODO:
       const newTodos1 = [...todos, action.payload];
       return newTodos1;
-    case "removeTodo":
+    case REMOVE_TODO:
       // const newTodos = state.todos.filter(todo => todo.id !== action.payload)
 
       return {
         ...todos,
         todos: todos.filter((todo) => todo.id !== action.payload)
       };
-    case "toggleTodo":
+    case TOGGLE_TODO:
       const newTodos = todos.map((todo) =>
         todo.id === action.payload
           ? { ...todo, state: todo.state === "todo" ? "done" : "todo" }
