@@ -1,6 +1,7 @@
-import store from "./store";
-import {useDispatch, useSelector} from "react-redux"
-import {ADD_TODO} from './actionTypes'
+// import store from "./store";
+import { useDispatch, useSelector } from "react-redux"
+import {addTodo} from './actionCreators'
+// import {ADD_TODO} from './actionTypes'
 const { React } = require("react");
 const { List, Button } = require("antd");
 var fn = require('funclib');
@@ -28,12 +29,7 @@ function Test() {
   const todos = useSelector<TStore, TTodo[]>(selectFilteredTodos)
     // console.log(state);
     const add = () => {
-        const newTodo: TTodo = {
-            id: '99',
-            text: '吃好吃的',
-            state: 'todo',
-          }
-          dispatch({type: ADD_TODO, payload: newTodo})
+      dispatch(addTodo())
     }
   return (
     <div>
