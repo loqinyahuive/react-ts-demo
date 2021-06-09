@@ -3,7 +3,7 @@
 import './App.less';
 import  MyFirstGrid from './components/react-grid-layout-test'
 import AntdDemo from './components/AntdDemo'
-import  TestReux from './ReactReduxTodo/testReux'
+import  TestReux from './ReactReduxTodo/index'
 const { React } = require('react');
 
 function App() {

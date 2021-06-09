@@ -1,4 +1,3 @@
-import {combineReducers} from "redux"
 const initTodos: TTodo[] = [
   {
     id: "1",
@@ -21,43 +20,32 @@ const initState = {
   todos: initTodos,
   filter: initFilter
 };
-const todosReducer = (todos: TTodo[] = initTodos, action: any) => {
+const reducer = (state = initState, action: any) => {
   switch (action.type) {
     case "addTodo":
-      const newTodos1 = [...todos, action.payload];
-      return newTodos1;
+      const newTodos1 = [...state.todos, action.payload];
+      return { ...state, todos: newTodos1 };
     case "removeTodo":
       // const newTodos = state.todos.filter(todo => todo.id !== action.payload)
 
       return {
-        ...todos,
-        todos: todos.filter((todo) => todo.id !== action.payload)
+        ...state,
+        todos: state.todos.filter((todo) => todo.id !== action.payload)
       };
     case "toggleTodo":
-      const newTodos = todos.map((todo) =>
+      const newTodos = state.todos.map((todo) =>
         todo.id === action.payload
           ? { ...todo, state: todo.state === "todo" ? "done" : "todo" }
           : todo
       );
 
-      return { ...todos, todos: newTodos };
-    default:
-      return todos;
-  }
-};
-
-const filterReducer = (filter: TFilter = initFilter, action: any) => {
-  switch (action.type) {
+      return { ...state, todos: newTodos };
     case "setFilter":
-      return action.payload;
+      return { ...state, filter: action.payload };
     case "reset":
-      return initFilter;
+      return initState;
     default:
-      return filter;
+      return state;
   }
 };
-const reducer = combineReducers({
-  todos: todosReducer,
-  filter: filterReducer
-})
 export default reducer;

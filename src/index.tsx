@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-const {React} = require('react');
+const { React } = require('react');
 
 ReactDOM.render(
   // <React.StrictMode>
