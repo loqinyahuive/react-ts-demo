@@ -1,4 +1,3 @@
-import { combineReducers } from "redux"
 import {ADD_TODO, REMOVE_TODO, TOGGLE_TODO} from './actionTypes'
 const initTodos: TTodo[] = [
   {
@@ -22,7 +21,7 @@ const initState = {
   todos: initTodos,
   filter: initFilter
 };
-const todosReducer = (todos: TTodo[] = initTodos, action: any) => {
+export const todosReducer = (todos: TTodo[] = initTodos, action: any) => {
   switch (action.type) {
     case ADD_TODO:
       const newTodos1 = [...todos, action.payload];
@@ -47,7 +46,7 @@ const todosReducer = (todos: TTodo[] = initTodos, action: any) => {
   }
 };
 
-const filterReducer = (filter: TFilter = initFilter, action: any) => {
+export const filterReducer = (filter: TFilter = initFilter, action: any) => {
   switch (action.type) {
     case "setFilter":
       return action.payload;
@@ -57,8 +56,8 @@ const filterReducer = (filter: TFilter = initFilter, action: any) => {
       return filter;
   }
 };
-const reducer = combineReducers({
-  todos: todosReducer,
-  filter: filterReducer
-})
-export default reducer;
+// const reducer = combineReducers({
+//   todos: todosReducer,
+//   filter: filterReducer
+// })
+// export default reducer;
