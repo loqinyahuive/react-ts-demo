@@ -1,10 +1,10 @@
 // import store from "./store";
 import { useDispatch, useSelector } from "react-redux"
 import {addTodo} from './actionCreators'
+import {selectFilteredTodos} from './selectors'
 // import {ADD_TODO} from './actionTypes'
 const { React } = require("react");
 const { List, Button } = require("antd");
-var fn = require('funclib');
 
 // const state = store.getState();
 function Test() {
@@ -18,14 +18,7 @@ function Test() {
   //   return fn.filter(todos, todo => todo.state === state.filter);
   // })
   // 写法二
-  const selectFilteredTodos = (state) => {
-      const todos = state.todos
-      if (state.filter === 'all') {
-        return todos
-      }
-    // return todos.filter(todos, todo => todo.state === state.filter);
-      return fn.filter(todos, todo => todo.state === state.filter);
-    }
+  
   const todos = useSelector<TStore, TTodo[]>(selectFilteredTodos)
     // console.log(state);
     const add = () => {
